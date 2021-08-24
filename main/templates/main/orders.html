@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Purchased Items
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% for item in owned_items %}
+    <div class="card" style="width: 40%; margin:5%; float: left">
+      <img src="{{ item.image_url}}" class="card-img-top" height="400" alt="Sorry">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.pk }}. {{ item.name }}</h5>
+          <h6>{{ item.price }}$</h6>
+        <p class="card-text">{{ item.description }}</p>
+      </div>
+    </div>
+{% endfor %}
+{% else %}
+<h1>Sorry! You are not logged in!</h1>
+{% endif %}
+{% endblock %}
